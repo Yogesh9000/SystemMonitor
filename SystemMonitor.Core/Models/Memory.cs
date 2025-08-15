@@ -7,4 +7,18 @@ namespace SystemMonitor.Core.Models;
 /// </summary>
 /// <param name="Size"></param>
 /// <param name="Unit"></param>
-public record Memory(double Size, MemoryUnit Unit);
+public record Memory(double Size, MemoryUnit Unit)
+{
+    public override string ToString()
+    {
+        var unit = Unit switch
+        {
+            MemoryUnit.Bytes => "B",
+            MemoryUnit.Kilobytes => "KB",
+            MemoryUnit.Megabytes => "MB",
+            MemoryUnit.Gigabytes => "GB",
+            _ => ""
+        };
+        return $"{Size:0.00}{unit}";
+    }
+};
