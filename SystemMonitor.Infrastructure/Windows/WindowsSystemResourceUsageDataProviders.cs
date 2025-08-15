@@ -26,7 +26,7 @@ public sealed class WindowsSystemResourceUsageDataProvider : ISystemResourceUsag
         _currentProcess = Process.GetCurrentProcess();
 
         // Warm Up Performance Counter, As First call always reads 0
-        _cpuPerformanceCounter.NextValue();
+        _ = _cpuPerformanceCounter.NextValue();
     }
 
     /// <summary>
