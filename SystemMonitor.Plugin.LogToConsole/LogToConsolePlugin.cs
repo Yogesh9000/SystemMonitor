@@ -6,7 +6,7 @@ namespace SystemMonitor.Plugin.LogToConsole;
 
 public class LogToConsolePlugin : ISystemMonitorPlugin
 {
-    public void OnSystemResourceUsageDataReceived(SystemResourceUsageDto systemResourceUsage)
+    public Task OnSystemResourceUsageDataReceived(SystemResourceUsageDto systemResourceUsage)
     {
         Console.WriteLine("------------------------------------------------------------");
         Console.WriteLine($"Cpu Usage: {systemResourceUsage.CpuUsage.Used:0.00}%");
@@ -17,5 +17,6 @@ public class LogToConsolePlugin : ISystemMonitorPlugin
         {
             Console.WriteLine($"  Name: {diskUsage.Name}, Used: {diskUsage.Used.ToGb()}, Total: {diskUsage.Total.ToGb()}");
         }
+        return Task.CompletedTask;
     }
 }

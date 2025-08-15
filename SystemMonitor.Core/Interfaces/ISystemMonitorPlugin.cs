@@ -4,5 +4,5 @@ namespace SystemMonitor.Core.Interfaces;
 
 public interface ISystemMonitorPlugin
 {
-    public void OnSystemResourceUsageDataReceived(SystemResourceUsageDto systemResourceUsage);
+    public Task OnSystemResourceUsageDataReceived(SystemResourceUsageDto systemResourceUsage);
 }

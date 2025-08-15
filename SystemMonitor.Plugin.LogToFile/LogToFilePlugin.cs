@@ -18,7 +18,7 @@ public class LogToFilePlugin(ILogger<LogToFilePlugin> logger) : IConfigurableSys
     private string _logFilePath = Path.Combine(AppContext.BaseDirectory, "log.txt");
     private readonly ILogger _logger = logger;
 
-    public void OnSystemResourceUsageDataReceived(SystemResourceUsageDto systemResourceUsage)
+    public Task OnSystemResourceUsageDataReceived(SystemResourceUsageDto systemResourceUsage)
     {
         StringBuilder sb = new();
         _ =sb.AppendLine("------------------------------------------------------------")
@@ -32,6 +32,7 @@ public class LogToFilePlugin(ILogger<LogToFilePlugin> logger) : IConfigurableSys
         }
         _ = sb.AppendLine();
         LogToFilePath(_logFilePath, sb.ToString());
+        return Task.CompletedTask;
     }
 
     /// <summary>
