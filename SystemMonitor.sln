@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemMonitor.Infrastructur
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemMonitor.Plugin.LogToConsole", "SystemMonitor.Plugin.LogToConsole\SystemMonitor.Plugin.LogToConsole.csproj", "{5A962CED-EEFA-49DB-BF02-809FB58C797E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemMonitor.Plugin.LogToFile", "SystemMonitor.Plugin.LogToFile\SystemMonitor.Plugin.LogToFile.csproj", "{5B40A8C6-C419-40E2-863B-62060C3E457F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,5 +29,9 @@ Global
 		{5A962CED-EEFA-49DB-BF02-809FB58C797E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A962CED-EEFA-49DB-BF02-809FB58C797E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A962CED-EEFA-49DB-BF02-809FB58C797E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B40A8C6-C419-40E2-863B-62060C3E457F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B40A8C6-C419-40E2-863B-62060C3E457F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B40A8C6-C419-40E2-863B-62060C3E457F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B40A8C6-C419-40E2-863B-62060C3E457F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
