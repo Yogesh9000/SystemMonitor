@@ -4,5 +4,5 @@ namespace SystemMonitor.Core.Interfaces;
 
 public interface ISystemResourceUsageDataProvider
 {
-    public SystemResourceUsageDto  GetSystemResourceUsage();
+    public Task<SystemResourceUsageDto>  GetSystemResourceUsage(int delay);
 }
