@@ -67,11 +67,14 @@ class Program
         var fullPath = Path.IsPathRooted(path) ? path : Path.Combine(AppContext.BaseDirectory, path);
         
         // Create monitoring service 
+        logger.LogInformation("Creating monitoring service...");
         var monitoringService = serviceProvider.GetRequiredService<SystemResourceUsageMonitoringService>();
         // load plugins
+        logger.LogInformation($"Loading plugins from directory: {fullPath}");
         monitoringService.LoadPluginsFromDirectory(fullPath, enabledPlugins);
         // begin monitoring
         var delay = configuration.GetValue("Delay", 1000); // Get delay from config
+        logger.LogInformation($"Begin monitoring loop with delay of {delay}ms");
         await monitoringService.Run(delay);
         logger.LogInformation("ShutDown Application Successfully");
     }
