@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemMonitor.Plugin.LogToF
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemMonitor.Plugin.LogToApi", "SystemMonitor.Plugin.LogToApi\SystemMonitor.Plugin.LogToApi.csproj", "{B778D56E-7063-4CEF-B45D-57D706CE3BA6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemMonitor.CliApp", "SystemMonitor.CliApp\SystemMonitor.CliApp.csproj", "{5056BB17-B3DB-4452-88F2-9F426463E439}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,5 +41,9 @@ Global
 		{B778D56E-7063-4CEF-B45D-57D706CE3BA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B778D56E-7063-4CEF-B45D-57D706CE3BA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B778D56E-7063-4CEF-B45D-57D706CE3BA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5056BB17-B3DB-4452-88F2-9F426463E439}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5056BB17-B3DB-4452-88F2-9F426463E439}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5056BB17-B3DB-4452-88F2-9F426463E439}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5056BB17-B3DB-4452-88F2-9F426463E439}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

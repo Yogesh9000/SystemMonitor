@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.Extensions.Configuration" Version="10.0.0-preview.7.25380.108" />
+      <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="10.0.0-preview.7.25380.108" />
+      <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="10.0.0-preview.7.25380.108" />
+      <PackageReference Include="Microsoft.Extensions.Logging" Version="10.0.0-preview.7.25380.108" />
+      <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="10.0.0-preview.7.25380.108" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\SystemMonitor.Core\SystemMonitor.Core.csproj" />
+      <ProjectReference Include="..\SystemMonitor.Infrastructure\SystemMonitor.Infrastructure.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="bin\Debug\net9.0\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Include="bin\Debug\net9.0\Plugins\DummyApp.dll" />
+      <None Include="bin\Debug\net9.0\Plugins\SystemMonitor.Plugin.LogToApi.dll" />
+      <None Include="bin\Debug\net9.0\Plugins\SystemMonitor.Plugin.LogToConsole.dll" />
+      <None Include="bin\Debug\net9.0\Plugins\SystemMonitor.Plugin.LogToFile.dll" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <!-- Copy appsettings.json -->
+        <None Update="appsettings.json">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+
+        <!-- Copy plugins folder -->
+        <None Update="plugins\**\*.*">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
+
+</Project>
