@@ -56,7 +56,7 @@ public class LogToFilePlugin(ILogger<LogToFilePlugin> logger) : IConfigurableSys
     private void LogToFilePath(string logFilePath, string msg)
     {
         var logFileDir = Path.GetDirectoryName(_logFilePath);
-        if (logFileDir is not null && !Directory.Exists(logFileDir))
+        if (!string.IsNullOrEmpty(logFileDir) && !Directory.Exists(logFileDir))
         {
             Directory.CreateDirectory(logFileDir);
         }
