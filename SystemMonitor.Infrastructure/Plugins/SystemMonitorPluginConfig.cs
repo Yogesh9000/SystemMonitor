@@ -1,11 +1,12 @@
+using Microsoft.Extensions.Configuration;
 using SystemMonitor.Core.Interfaces;
 
 namespace SystemMonitor.Infrastructure.Plugins;
 
-public class SystemMonitorPluginConfig(Dictionary<string, string> config) : ISystemMonitorPluginConfig
+public class SystemMonitorPluginConfig(IConfiguration configuration) : ISystemMonitorPluginConfig
 {
     public string? GetConfigValue(string key)
     {
-        return config.GetValueOrDefault(key);
+        return configuration[key];
     }
 }
