@@ -3,8 +3,16 @@ using SystemMonitor.Core.Models.Enum;
 
 namespace SystemMonitor.Infrastructure.Extensions;
 
+/// <summary>
+/// Extension methods for <see cref="Memory"/>
+/// </summary>
 public static class MemoryExtensions
 {
+    /// <summary>
+    /// Convert Memory to Bytes
+    /// </summary>
+    /// <param name="memory"></param>
+    /// <returns></returns>
     public static Memory ToBytes(this Memory memory)
     {
         return memory.Unit switch
@@ -16,6 +24,11 @@ public static class MemoryExtensions
         };
     }
     
+    /// <summary>
+    /// Convert Memory to KiloBytes
+    /// </summary>
+    /// <param name="memory"></param>
+    /// <returns></returns>
     public static Memory ToKb(this Memory memory)
     {
         return memory.Unit switch
@@ -27,6 +40,11 @@ public static class MemoryExtensions
         };
     }
     
+    /// <summary>
+    /// Convert Memory to MegaBytes
+    /// </summary>
+    /// <param name="memory"></param>
+    /// <returns></returns>
     public static Memory ToMb(this Memory memory)
     {
         return memory.Unit switch
@@ -38,6 +56,11 @@ public static class MemoryExtensions
         };
     }
     
+    /// <summary>
+    /// Convert Memory to GigaBytes
+    /// </summary>
+    /// <param name="memory"></param>
+    /// <returns></returns>
     public static Memory ToGb(this Memory memory)
     {
         return memory.Unit switch

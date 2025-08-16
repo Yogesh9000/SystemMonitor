@@ -8,6 +8,10 @@ namespace SystemMonitor.CliApp.Services;
 
 public class SystemResourceUsageDataProviderResolver(IServiceProvider serviceProvider, OperatingSystemDetectionService operatingSystem)
 {
+    /// <summary>
+    /// Get system resource usage data provider for current operatin system
+    /// </summary>
+    /// <returns></returns>
     public ISystemResourceUsageDataProvider? GetSystemResourceUsageDataProvider()
     {
         var currentOs = operatingSystem.GetCurrentOperatingSystem();

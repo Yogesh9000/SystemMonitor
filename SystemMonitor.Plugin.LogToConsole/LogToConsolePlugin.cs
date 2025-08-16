@@ -4,11 +4,19 @@ using SystemMonitor.Infrastructure.Extensions;
 
 namespace SystemMonitor.Plugin.LogToConsole;
 
+/// <summary>
+/// Plugin to log system resource usage to console
+/// </summary>
 public class LogToConsolePlugin : ISystemMonitorPlugin
 {
     public string Name { get; } = "LogToConsole";
     public string Description { get; } = "Plugin to log system resource usage data to console";
 
+    /// <summary>
+    /// Log the system resource usage to console
+    /// </summary>
+    /// <param name="systemResourceUsage"></param>
+    /// <returns></returns>
     public Task OnSystemResourceUsageDataReceived(SystemResourceUsageDto systemResourceUsage)
     {
         Console.WriteLine("------------------------------------------------------------");

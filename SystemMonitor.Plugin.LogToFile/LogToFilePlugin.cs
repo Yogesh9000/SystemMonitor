@@ -21,6 +21,11 @@ public class LogToFilePlugin(ILogger<LogToFilePlugin> logger) : IConfigurableSys
     public string Name { get; } = "LogToFile";
     public string Description { get; } = "Plugin to log system resource usage data to file";
 
+    /// <summary>
+    /// Logs system resource usage to file.
+    /// </summary>
+    /// <param name="systemResourceUsage"></param>
+    /// <returns></returns>
     public Task OnSystemResourceUsageDataReceived(SystemResourceUsageDto systemResourceUsage)
     {
         StringBuilder sb = new();

@@ -21,8 +21,13 @@ public class LogToApiPlugin(HttpClient httpClient, ILogger<LogToApiPlugin> logge
     public string Name { get; } = "LogToApi";
     public string Description { get; } = "Plugin to log system resource usage data to api endpoint";
 
+    // api endpoint to log messages
     private string? _endpoint;
 
+    /// <summary>
+    /// Log system resource usage to api endpoint
+    /// </summary>
+    /// <param name="systemResourceUsage"></param>
     public async Task OnSystemResourceUsageDataReceived(SystemResourceUsageDto systemResourceUsage)
     {
         if (_endpoint is null)
@@ -57,6 +62,7 @@ public class LogToApiPlugin(HttpClient httpClient, ILogger<LogToApiPlugin> logge
 
     public void Configure(ISystemMonitorPluginConfig config)
     {
+        // get endpoint from config
         _endpoint = config.GetConfigValue("LogToApi:EndPoint");
     }
 }

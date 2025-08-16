@@ -9,6 +9,10 @@ namespace SystemMonitor.Core.Models;
 /// <param name="Unit"></param>
 public record Memory(double Size, MemoryUnit Unit)
 {
+    /// <summary>
+    /// Pretty print memory with units
+    /// </summary>
+    /// <returns></returns>
     public override string ToString()
     {
         var unit = Unit switch

@@ -2,6 +2,10 @@ using SystemMonitor.CliApp.Models.Enum;
 
 namespace SystemMonitor.CliApp.Services;
 
+/// <summary>
+/// Service for detecting operating system
+/// Service is DI injectable
+/// </summary>
 public class OperatingSystemDetectionService
 {
     public OperatingSystemType GetCurrentOperatingSystem()

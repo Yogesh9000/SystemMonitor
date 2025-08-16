@@ -43,17 +43,20 @@ public class DirectoryPluginLoader(IServiceProvider serviceProvider, ILogger<Dir
 
     public void LoadPluginsFromDirectory(string directoryPath)
     {
+        // exit early if invalid directory
         if (!Directory.Exists(directoryPath))
         {
             logger.Log(LogLevel.Error, $"Directory not found: {directoryPath}");
             return;
         }
 
+        // get *dll files from directory
         foreach (var dllPath in Directory.GetFiles(directoryPath, "*.dll"))
         {
             Assembly assembly;
             try
             {
+                // load dll
                 assembly = Assembly.LoadFile(dllPath);
             }
             catch
@@ -62,11 +65,13 @@ public class DirectoryPluginLoader(IServiceProvider serviceProvider, ILogger<Dir
                 continue;
             }
 
+            // get type which implement ISystemMonitorPlugin
             foreach (var type in assembly.GetTypes().Where(t => typeof(ISystemMonitorPlugin).IsAssignableFrom(t) && t is { IsAbstract: false, IsInterface: false }))
             {
                 try
                 {
                     var instance = CreateSystemMonitorPluginOfType(type);
+                    // if plugin is configurable, configure it
                     if (instance is IConfigurableSystemMonitorPlugin configurableSystemMonitorPlugin)
                     {
                         configurableSystemMonitorPlugin.Configure(config);
@@ -81,6 +86,12 @@ public class DirectoryPluginLoader(IServiceProvider serviceProvider, ILogger<Dir
         }
     }
 
+    /// <summary>
+    /// Try create <see cref="ISystemMonitorPlugin"/> from given <see cref="type"/>
+    /// </summary>
+    /// <param name="type"></param>
+    /// <returns></returns>
+    /// <exception cref="Exception"></exception>
     private ISystemMonitorPlugin CreateSystemMonitorPluginOfType(Type type)
     {
         try
