@@ -56,6 +56,9 @@ public class SystemResourceUsageMonitoringService
             return;
         }
         
+        // print enabled plugins
+        _logger.LogInformation($"Following plugins will be executed: [{string.Join(", ", _listOfLoadedAndEnabledPlugins.Select(p => p.Name))}]");
+        
         var cts = new CancellationTokenSource();
         // Prevent immediate process kill and wait for all producers and consumers to finish
         Console.CancelKeyPress += (s, e) =>
