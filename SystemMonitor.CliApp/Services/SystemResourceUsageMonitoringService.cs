@@ -94,7 +94,7 @@ public class SystemResourceUsageMonitoringService
                     await Task.Delay(delay, cts.Token);
                 }
             }
-            catch (OperationCanceledException e)
+            catch (OperationCanceledException)
             {
                 // Nothing to do here
             }
@@ -127,7 +127,7 @@ public class SystemResourceUsageMonitoringService
                         }
                     }
                 }
-                catch (OperationCanceledException e)
+                catch (OperationCanceledException)
                 {
                     // Nothing to do here
                 }
