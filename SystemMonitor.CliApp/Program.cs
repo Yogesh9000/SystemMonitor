@@ -18,6 +18,7 @@ class Program
         var configuration = new ConfigurationBuilder()
             .SetBasePath(AppContext.BaseDirectory) // ensures correct runtime path
             .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+            .AddCommandLine(args) // arguments can also be overriden from json
             .Build();
 
         // Setup DI container
@@ -49,8 +50,13 @@ class Program
         
         var logger = serviceProvider.GetRequiredService<ILogger<Program>>();
 
-        // Get names of enabled plugins
-        List<string> enabledPlugins = configuration.GetSection("Plugins:Enabled").Get<List<string>>() ?? [];
+        // Get names of enabled plugins from both cli and json and merge them
+        var jsonPlugins = configuration.GetSection("Plugins:Enabled").Get<List<string>>() ?? [];
+        var cliPlugins = args
+            .Where(a => a.StartsWith("EnablePlugin", StringComparison.OrdinalIgnoreCase))
+            .Select(a => a.Split('=')[1]) // grab the RHS value
+            .ToList();
+        List<string> enabledPlugins = cliPlugins.Count > 0 ? cliPlugins : jsonPlugins;
         var path = configuration["Plugins:Path"];
         if (string.IsNullOrEmpty(path))
         {
@@ -65,7 +71,8 @@ class Program
         // load plugins
         monitoringService.LoadPluginsFromDirectory(fullPath, enabledPlugins);
         // begin monitoring
-        await monitoringService.Run(1000);
+        var delay = configuration.GetValue("Delay", 1000); // Get delay from config
+        await monitoringService.Run(delay);
         logger.LogInformation("ShutDown Application Successfully");
     }
 }
