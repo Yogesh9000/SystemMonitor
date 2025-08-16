@@ -15,7 +15,7 @@ public class LogToApiTests
     [Fact]
     public async Task  OnSystemResourceUsageDataReceived_WhenCalledWithValidUsageData_ShouldSendItToConfiguredEndPoint()
     {
-                // Arrange
+        // Arrange
         var endpoint = "http://localhost/test-endpoint";
 
         // Mock HttpMessageHandler to intercept requests
