@@ -18,6 +18,9 @@ public class LogToFilePlugin(ILogger<LogToFilePlugin> logger) : IConfigurableSys
     private string _logFilePath = Path.Combine(AppContext.BaseDirectory, "log.txt");
     private readonly ILogger _logger = logger;
 
+    public string Name { get; } = "LogToFile";
+    public string Description { get; } = "Plugin to log system resource usage data to file";
+
     public Task OnSystemResourceUsageDataReceived(SystemResourceUsageDto systemResourceUsage)
     {
         StringBuilder sb = new();

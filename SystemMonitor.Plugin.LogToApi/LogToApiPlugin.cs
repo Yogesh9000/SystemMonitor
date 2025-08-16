@@ -18,6 +18,9 @@ namespace SystemMonitor.Plugin.LogToApi;
 /// </remarks>
 public class LogToApiPlugin(HttpClient httpClient, ILogger<LogToApiPlugin> logger) : IConfigurableSystemMonitorPlugin
 {
+    public string Name { get; } = "LogToApi";
+    public string Description { get; } = "Plugin to log system resource usage data to api endpoint";
+
     private string? _endpoint;
 
     public async Task OnSystemResourceUsageDataReceived(SystemResourceUsageDto systemResourceUsage)

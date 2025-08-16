@@ -6,6 +6,9 @@ namespace SystemMonitor.Plugin.LogToConsole;
 
 public class LogToConsolePlugin : ISystemMonitorPlugin
 {
+    public string Name { get; } = "LogToConsole";
+    public string Description { get; } = "Plugin to log system resource usage data to console";
+
     public Task OnSystemResourceUsageDataReceived(SystemResourceUsageDto systemResourceUsage)
     {
         Console.WriteLine("------------------------------------------------------------");
